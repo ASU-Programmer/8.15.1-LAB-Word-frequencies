@@ -1,0 +1,37 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class LabProgram {
+   public static void main(String[] args) {
+      /* Type your code here. */
+      Scanner scnr = new Scanner(System.in);
+      int numWords = scnr.nextInt();
+      String[] wordList = new String[20];
+      int[] frequencyList = new int[20];
+      String[] uniqueList = new String[20];
+      int uniqueWords = 0;
+      
+      for(int i = 0; i < numWords; i++) {
+         wordList[i] = scnr.next();
+         boolean foundWord = false;
+         for(int j = 0; j < uniqueWords; j++) {
+            if(uniqueList[j].equals(wordList[i])) {
+               frequencyList[j]++;
+               foundWord = true;
+            }
+         }
+         if(foundWord == false) {
+            uniqueList[uniqueWords] = wordList[i];
+            frequencyList[uniqueWords]++;
+            uniqueWords++;
+         }
+      }
+      for(int i = 0; i < numWords; i++) {
+         for(int j = 0; j < uniqueWords; j++) {
+            if(uniqueList[j].equals(wordList[i])) {
+               System.out.println(wordList[i] + " - " + frequencyList[j]);
+            }
+         }
+      }
+   }
+}
